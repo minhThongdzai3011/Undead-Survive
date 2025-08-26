@@ -8,14 +8,14 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       UpdatePlayerHpText();
+        UpdatePlayerHpText();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void TakeDamage(float damage)
@@ -34,6 +34,31 @@ public class Player : MonoBehaviour
         if (playerHpText != null)
         {
             playerHpText.text = "HP: " + playerHP.ToString("F0");
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Box"))
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("Box Collected");
+        }
+        else if (collision.CompareTag("Exp0"))
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("Player hit by Enemy1");
+        }
+        else if (collision.CompareTag("Exp1"))
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("Player hit by Enemy2");
+        }
+        else if (collision.CompareTag("Exp2"))
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("Player hit by Enemy3");
         }
     }
 }

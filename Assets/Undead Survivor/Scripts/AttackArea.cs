@@ -22,11 +22,11 @@ public class AttackArea : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        Debug.Log($"collider != null: {collider != null}");
+        // Debug.Log($"collider != null: {collider != null}");
         if (collider != null)
         {
             HealthTest health = collider.GetComponent<HealthTest>();
-                Debug.Log($"hasAttacked: {hasAttacked}");
+                // Debug.Log($"hasAttacked: {hasAttacked}");
             if(health != null)
             {
                 if (hasAttacked)

@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Player1
+  - Box
+  - Exp1
+  - Exp2
+  - Exp3
   layers:
   - Default
   - TransparentFX
