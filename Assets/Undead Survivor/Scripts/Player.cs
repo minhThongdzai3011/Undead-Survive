@@ -5,17 +5,29 @@ public class Player : MonoBehaviour
 {
     public float playerHP = 100f;
     public TextMeshProUGUI playerHpText;
+    public PlayerController playerController;
+    private Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         UpdatePlayerHpText();
+        anim = GetComponent<Animator>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //Debug.Log($"playerController == null: {playerController == null}");
+        if (playerController == null) return;
+        if (playerController.isMoving)
+        {
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
     }
 
     public void TakeDamage(float damage)
@@ -45,17 +57,17 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
             Debug.Log("Box Collected");
         }
-        else if (collision.CompareTag("Exp0"))
+        else if (collision.CompareTag("Exp1"))
         {
             Destroy(collision.gameObject);
             Debug.Log("Player hit by Enemy1");
         }
-        else if (collision.CompareTag("Exp1"))
+        else if (collision.CompareTag("Exp2"))
         {
             Destroy(collision.gameObject);
             Debug.Log("Player hit by Enemy2");
         }
-        else if (collision.CompareTag("Exp2"))
+        else if (collision.CompareTag("Exp3"))
         {
             Destroy(collision.gameObject);
             Debug.Log("Player hit by Enemy3");
